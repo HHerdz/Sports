@@ -1,0 +1,14 @@
+nav{
+    background: linear-gradient(to right,rgb(74, 248, 225),rgb(114, 240, 11));
+    font-size: 18px;
+    color: black;
+}
+button{
+    background-color: black;
+    color: white;
+    border: 0px;
+    border-radius: 25px;
+}
+button:hover{
+    background-color: rgb(56, 179, 162);
+}

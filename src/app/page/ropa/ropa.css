@@ -1,0 +1,15 @@
+.card-img-top {
+  height: 280px; 
+  width: 100%;
+  object-fit: cover;
+}
+.row{
+  justify-content: center;
+  gap: 12px;
+}
+.fondo{
+  min-height: 100vh;
+  background: url('/img/f3.jpg');
+  background-size: cover;
+  background-position: center; 
+}

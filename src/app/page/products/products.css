@@ -1,0 +1,15 @@
+
+
+section {
+    padding: 60px 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+    background: rgb(159, 240, 209, 0.7);
+    border-radius: 20px;
+}
+.fondo{
+  min-height: 100vh;
+  background: url('/img/f4.jpg');
+  background-size: cover;
+  background-position: center; 
+}
