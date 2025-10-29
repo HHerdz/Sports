@@ -47,7 +47,7 @@
                 }
               ],
               "outputHashing": "all",
-              "baseHref": "https://HHerdz.github.io/Sports/"
+              "baseHref": "/Sports/"
             },
             "development": {
               "optimization": false,
@@ -97,5 +97,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "fab86325-f179-4235-aed6-68221e5f4d8f"
   }
 }
