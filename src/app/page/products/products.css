@@ -9,7 +9,7 @@ section {
 }
 .fondo{
   min-height: 100vh;
-  background: url('/img/f4.jpg');
+  background: url('../../../../public/img/f4.jpg');
   background-size: cover;
   background-position: center; 
 }

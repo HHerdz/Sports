@@ -48,7 +48,7 @@ section {
 }
 .fondo{
   min-height: 100vh;
-  background: url('/img/f5.jpg');
+  background: url('../../../../public/img/f5.jpg');
   background-size: cover;
   background-position: center; 
 }
