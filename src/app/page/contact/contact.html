@@ -1,86 +1,127 @@
 <div class="fondo">
-<br>
-<br>
-<br>
-<br>
-<section class="row g-3">
-    <h2 style="text-align: center;">Contacto</h2>
-    <div class="col-12">
-    <label for="inputAddress2" class="form-label">Nombre</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Harold Hernandez">
-  </div>
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Correo Electronico</label>
-    <input type="email" class="form-control" id="inputEmail4" placeholder="nombre@hotmail.com">
-  </div>
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Contraseña</label>
-    <input type="password" class="form-control" id="inputPassword4">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress" class="form-label">Dirección</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder=" Cll 12 # 3 - 4">
-  </div>
-  
-  <div class="col-md-6">
-    <label for="inputCity" class="form-label">Ciudad</label>
-    <input type="text" class="form-control" id="inputCity">
-  </div>
-  <div class="col-md-4">
-  <label for="inputState" class="form-label">Departamento</label>
-  <select id="inputState" class="form-select">
-    <option selected disabled>Seleccione...</option>
-    <option>Amazonas</option>
-    <option>Antioquia</option>
-    <option>Arauca</option>
-    <option>Atlántico</option>
-    <option>Bolívar</option>
-    <option>Boyacá</option>
-    <option>Caldas</option>
-    <option>Caquetá</option>
-    <option>Casanare</option>
-    <option>Cauca</option>
-    <option>Cesar</option>
-    <option>Chocó</option>
-    <option>Córdoba</option>
-    <option>Cundinamarca</option>
-    <option>Guainía</option>
-    <option>Guaviare</option>
-    <option>Huila</option>
-    <option>La Guajira</option>
-    <option>Magdalena</option>
-    <option>Meta</option>
-    <option>Nariño</option>
-    <option>Norte de Santander</option>
-    <option>Putumayo</option>
-    <option>Quindío</option>
-    <option>Risaralda</option>
-    <option>San Andrés y Providencia</option>
-    <option>Santander</option>
-    <option>Sucre</option>
-    <option>Tolima</option>
-    <option>Valle del Cauca</option>
-    <option>Vaupés</option>
-    <option>Vichada</option>
-  </select>
-</div>
+<br><br><br><br>
 
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Barrio</label>
-    <input type="text" class="form-control" id="inputZip">
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Aceptar Terminos y Condiciones
-      </label>
-    </div>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Enviar</button>
-  </div>
+<section class="row g-4">
+    <h2 style="text-align: center;">Contacto</h2>
+    <form [formGroup]="contactForm" (ngSubmit)="enviar()" novalidate>
+      <div class="col-10">
+        <label class="form-label">Nombre</label>
+        <input id="nombre" type="text" placeholder="Harold Hernandez" class="form-control"
+          formControlName="nombre"
+          [class.is-invalid]="f.nombre.invalid && f.nombre.touched">
+          <div class="invalid-feedback" *ngIf="f.nombre.touched && f.nombre.errors">
+            <div *ngIf="f.nombre.errors?.required">Este campo es obligatorio.</div>
+            <div *ngIf="f.nombre.errors?.minlength"> 
+              Minimo {{f.nombre.errors?.minlength?.requiredLength }} caracteres. 
+            </div>
+          </div>
+      </div>
+
+      <div class="col-10">
+        <label class="form-label">Correo Electrónico</label>
+        <input id="email" type="email" class="form-control" placeholder="nombre@hotmail.com"
+          formControlName="email"
+          [class.is-invalid]="f.email.invalid && f.email.touched">
+        <div class="invalid-feedback" *ngIf="f.email.touched && f.email.errors">
+          <div *ngIf="f.email.errors?.required">Este campo es obligatorio.</div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Contraseña</label>
+        <input type="password" class="form-control"
+          formControlName="password"
+          [class.is-invalid]="f.password.invalid && f.password.touched">
+        <div class="invalid-feedback" *ngIf="f.password.touched && f.password.errors">
+          <div *ngIf="f.password.errors?.required">Este campo es obligatorio.</div>
+            <div *ngIf="f.password.errors?.minlength"> 
+              Minimo {{f.password.errors?.minlength?.requiredLength }} caracteres. 
+            </div>
+          </div>
+      </div>
+
+      <div class="col-10">
+        <label class="form-label">Dirección</label>
+        <input type="text" class="form-control" placeholder="Cll 12 # 3 - 4"
+          formControlName="direccion"
+          [class.is-invalid]="f.direccion.invalid && f.direccion.touched">
+
+        <div class="invalid-feedback" *ngIf="f.direccion.touched && f.direccion.errors">
+          <div *ngIf="f.direccion.errors?.required">Este campo es obligatorio.</div>
+            <div *ngIf="f.direccion.errors?.minlength"> 
+              Minimo {{f.direccion.errors?.minlength?.requiredLength }} caracteres. 
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Ciudad</label>
+        <input type="text" class="form-control"
+          formControlName="ciudad"
+          [class.is-invalid]="f.ciudad.invalid && f.ciudad.touched">
+
+        <div class="invalid-feedback" *ngIf="f.ciudad.touched && f.ciudad.errors">
+          <div *ngIf="f.ciudad.errors?.required">Este campo es obligatorio.</div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Departamento</label>
+        <select class="form-select"
+          formControlName="departamento"
+          [class.is-invalid]="f.departamento.invalid && f.departamento.touched">
+          <option selected disabled value="">Seleccione...</option>
+          <option>Amazonas</option><option>Antioquia</option><option>Arauca</option>
+          <option>Atlántico</option><option>Bolívar</option><option>Boyacá</option>
+          <option>Caldas</option><option>Caquetá</option><option>Casanare</option>
+          <option>Cauca</option><option>Cesar</option><option>Chocó</option>
+          <option>Córdoba</option><option>Cundinamarca</option><option>Guainía</option>
+          <option>Guaviare</option><option>Huila</option><option>La Guajira</option>
+          <option>Magdalena</option><option>Meta</option><option>Nariño</option>
+          <option>Norte de Santander</option><option>Putumayo</option><option>Quindío</option>
+          <option>Risaralda</option><option>San Andrés y Providencia</option><option>Santander</option>
+          <option>Sucre</option><option>Tolima</option><option>Valle del Cauca</option>
+          <option>Vaupés</option><option>Vichada</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="f.departamento.touched && f.departamento.errors">
+          <div *ngIf="f.departamento.errors?.required">Este campo es obligatorio.</div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label">Barrio</label>
+        <input type="text" class="form-control"
+          formControlName="barrio"
+          [class.is-invalid]="f.barrio.invalid && f.barrio.touched">
+
+        <div class="invalid-feedback" *ngIf="f.barrio.touched && f.barrio.errors">
+          <div *ngIf="f.barrio.errors?.required">Este campo es obligatorio.</div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox"
+            formControlName="terminos"
+            [class.is-invalid]="f.terminos.invalid && f.terminos.touched">
+
+          <label class="form-check-label">
+            Aceptar Términos y Condiciones
+          </label>
+        </div>
+        <div class="invalid-feedback d-block" *ngIf="f.terminos.touched && f.terminos.errors">
+          <div *ngIf="f.terminos.errors?.required">Debe aceptar los términos.</div>
+        </div>
+
+        <br>
+      </div>
+
+      <div class="d-flex gap-3">
+        <button type="submit" class="btn btn-primary flex fill">Enviar</button>
+        <button type="button" class="btn btn-secondary flex fill" (click)="cancelar()">Cancelar</button>
+      </div>
+    </form>
 </section>
-<br>
-<br>
+
+<br><br>
 </div>
