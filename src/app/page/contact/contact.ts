@@ -17,7 +17,7 @@ export class Contact {
     this.contactForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      telefono: ['', [Validators.required, Validators.minLength(10)]],
       direccion: ['', [Validators.required, Validators.minLength(5)]],
       ciudad: ['', [Validators.required]],
       departamento: ['', [Validators.required]],
@@ -44,7 +44,7 @@ export class Contact {
   const data = {
     Nombre: this.f.nombre.value.trim(),
     Email: this.f.email.value.trim(),
-    Contraseña: this.f.password.value.trim(),
+    Telefono: this.f.telefono.value.trim(),
     Dirección: this.f.direccion.value.trim(),
     Ciudad: this.f.ciudad.value.trim(),
     Departamento: this.f.departamento.value.trim(),

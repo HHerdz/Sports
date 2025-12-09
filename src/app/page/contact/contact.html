@@ -30,14 +30,14 @@
         </div>
 
         <div class="col-12 col-md-6">
-          <label class="form-label">Contraseña</label>
-          <input type="password" class="form-control"
-            formControlName="password"
-            [class.is-invalid]="f.password.invalid && f.password.touched">
-          <div class="invalid-feedback" *ngIf="f.password.touched && f.password.errors">
-            <div *ngIf="f.password.errors['required']">Este campo es obligatorio.</div>
-            <div *ngIf="f.password.errors['minlength']"> 
-              Mínimo {{f.password.errors['minlength']['requiredLength']}} caracteres. 
+          <label class="form-label">Telefono</label>
+          <input type="telefono" class="form-control"
+            formControlName="telefono"
+            [class.is-invalid]="f.telefono.invalid && f.telefono.touched">
+          <div class="invalid-feedback" *ngIf="f.telefono.touched && f.telefono.errors">
+            <div *ngIf="f.telefono.errors['required']">Este campo es obligatorio.</div>
+            <div *ngIf="f.telefono.errors['minlength']"> 
+              Mínimo {{f.telefono.errors['minlength']['requiredLength']}} caracteres. 
             </div>
           </div>
         </div>
@@ -108,7 +108,7 @@
             </label>
           </div>
           <div class="invalid-feedback d-block" *ngIf="f.terminos.touched && f.terminos.errors">
-            <div *ngIf="f.terminos.errors['required']">Debe aceptar los términos.</div>
+            <div *ngIf="f.terminos.errors['required']">Debe aceptar los términos y condiciones.</div>
           </div>
         </div>
 
