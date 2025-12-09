@@ -36,39 +36,30 @@ export class Contact {
   }
 
   enviar(): void {
-    if (this.contactForm.invalid) {
-      this.contactForm.markAllAsTouched();
-      return;
-    }
-    const data = {
-      nombre: (this.f.nombre.value || '').toString().trim(),
-      email: (this.f.email.value || '').toString().trim(),
-      password: (this.f.password.value || '').toString().trim(),
-      direccion: (this.f.direccion.value || '').toString().trim(),
-      ciudad: (this.f.ciudad.value || '').toString().trim(),
-      departamento: (this.f.departamento.value || '').toString().trim(),
-      barrio: (this.f.barrio.value || '').toString().trim(),
-      terminos: (this.f.terminos.value || '').toString().trim(),
-    };
-    const contenido = `
-===== DATOS DEL CONTACTO =====
-Nombre: ${data.nombre}
-Email: ${data.email}
-Contraseña: ${data.password}
-Dirección: ${data.direccion}
-Ciudad: ${data.ciudad}
-Departamento: ${data.departamento}
-Barrio: ${data.barrio}
-----------------------------------
-Fecha: ${new Date().toLocaleString('es-ES')}
-`;
-
-      const blob = new Blob([contenido], { type: 'text/plain' });
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `Contacto_${data.nombre}_${Date.now()}.txt`;
-      link.click();
-      window.URL.revokeObjectURL(url);
+  if (this.contactForm.invalid) {
+    this.contactForm.markAllAsTouched();
+    return;
   }
+
+  const data = {
+    Nombre: this.f.nombre.value.trim(),
+    Email: this.f.email.value.trim(),
+    Contraseña: this.f.password.value.trim(),
+    Dirección: this.f.direccion.value.trim(),
+    Ciudad: this.f.ciudad.value.trim(),
+    Departamento: this.f.departamento.value.trim(),
+    Barrio: this.f.barrio.value.trim(),
+    Terminos: this.f.terminos.value
+  };
+
+  const json = JSON.stringify(data, null, 2); // 👉 convierte a JSON con formato bonito
+
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = window.URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `Contacto_${data.Nombre}_${Date.now()}.json`; // 👈 cambia a .json
+  link.click();
+  window.URL.revokeObjectURL(url);
+}
 }
